@@ -23,6 +23,16 @@ POSITIVE_WORDS = [
     "chill",
     "relaxed",
     "amazing",
+    # emoticons
+    ":)",
+    ":D",
+    "xo",
+    # emojis
+    "😂",
+    "😊",
+    "❤️",
+    "🥰",
+    "😍",
 ]
 
 NEGATIVE_WORDS = [
@@ -36,6 +46,16 @@ NEGATIVE_WORDS = [
     "stressed",
     "hate",
     "boring",
+    # emoticons
+    ":(",
+    ":P",
+    "D:",
+    # emojis
+    "😢",
+    "😭",
+    "😡",
+    "🥲",
+    "💀",
 ]
 
 # ---------------------------------------------------------------------
@@ -50,6 +70,13 @@ SAMPLE_POSTS = [
     "This is fine",
     "So excited for the weekend",
     "I am not happy about this",
+    "What a day, I am so excited but as the same time its boring",
+    "What an awful exam, so cooked",
+    "I am so awesome for getting all my to-dos done",
+    "I am so Dunkin smoothering",
+    "So stressed for what reason, I need to be more happy"
+
+
 ]
 
 # Human labels for each post above.
@@ -65,6 +92,11 @@ TRUE_LABELS = [
     "neutral",   # "This is fine"
     "positive",  # "So excited for the weekend"
     "negative",  # "I am not happy about this"
+    "mixed",     # "What a day, I am so excited but as the same time its boring"
+    "negative",  # "What an awful exam, so cooked"
+    "positive",  # "I am so awesome for getting all my to-dos done"
+    "neutral",   # "I am so Dunkin smoothering"
+    "mixed",     # "So stressed for what reason, I need ot be more happy"
 ]
 
 # TODO: Add 5-10 more posts and labels.

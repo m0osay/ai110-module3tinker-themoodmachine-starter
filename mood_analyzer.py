@@ -12,6 +12,7 @@ This class starts with very simple logic:
 from typing import List, Dict, Tuple, Optional
 
 from dataset import POSITIVE_WORDS, NEGATIVE_WORDS
+import re
 
 
 class MoodAnalyzer:
@@ -52,8 +53,19 @@ class MoodAnalyzer:
           - Handle simple emojis separately (":)", ":-(", "🥲", "😂")
           - Normalize repeated characters ("soooo" -> "soo")
         """
+        # Write a for loop
+
+
+        texts = text.split()
         cleaned = text.strip().lower()
         tokens = cleaned.split()
+
+        for i in range(len(tokens)):
+            tok = tokens[i]
+            tok = tok.strip(".,!?")
+            tok  = re.sub(r'(.)\1{2,}', r'\1\1', tok)
+
+
 
         return tokens
 
@@ -83,7 +95,30 @@ class MoodAnalyzer:
         #
         # Hint: if you implement negation, you may want to look at pairs of tokens,
         # like ("not", "happy") or ("never", "fun").
-        pass
+        tokens = self.preprocess(text)
+        pos = 0
+        neg = 0
+
+        for i in range(len(tokens)):
+            tok = tokens[i]
+            if tok in self.negative_words:
+                neg += 1
+            elif tok in self.positive_words:
+                pos += 1
+            else:
+                # check if last character is an emoji/emoticon glued to a word
+                last_char = tok[-1] if tok else ""
+                if last_char in self.positive_words:
+                    pos += 1
+                elif last_char in self.negative_words:
+                    neg += 1
+            if tok == "not":
+                if i + 1 < len(tokens) and tokens[i+1] in self.negative_words:
+                    pos += 1
+                elif i + 1 < len(tokens) and tokens[i+1] in self.positive_words:
+                    neg += 1
+        return pos - neg
+                
 
     # ---------------------------------------------------------------------
     # Label prediction
@@ -110,7 +145,21 @@ class MoodAnalyzer:
         #   2. Return "positive" if the score is above 0.
         #   3. Return "negative" if the score is below 0.
         #   4. Return "neutral" otherwise.
-        pass
+        #tokens = self.preprocess(text)
+        score = self.score_text(text)
+        # pos_matches = [t for t in tokens if t in self.positive_words]
+        # neg_matches = [t for t in tokens if t in self.negative_words]
+        # print(f"tokens: {tokens}")
+        # print(f"pos matches: {pos_matches}, neg matches: {neg_matches}")
+        # print(f"score: {score}")
+
+        if score > 0:
+            return "positive"
+        elif score < 0:
+            return "negative"
+        else:
+            return "neutral"
+        
 
     # ---------------------------------------------------------------------
     # Explanations (optional but recommended)
