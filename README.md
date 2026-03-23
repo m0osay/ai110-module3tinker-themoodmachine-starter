@@ -1,3 +1,11 @@
+# TF NOTES
+-> The core concept students need to understand is the fact this is the basics of ML
+-> Students most likely struggled to grasp the fact that although this looks like we are hardcoding the label to our results, this is the very basic of how ML runs, this is not as sophisticated — we don't really have the math/probabilistic behind it. But at its core, this is how basic it gets
+-> AI was helpful for guiding
+-> I will be honest I don't necessarily think AI was misleading in any particular case, it might be misleading if you don't have it on plan mode and have it basically implement everything
+-> One way TF should guide a student without giving the answer is when a student struggles to understand why their prediction is wrong, even if the words in the dataset are right and so is their code. Ask them: did they handle edge cases? For example, a semicolon in front of a word that wasn't removed, or an extra "s" added in front of a word, etc.
+
+
 # The Mood Machine
 
 The Mood Machine is a simple text classifier that begins with a rule based approach and can optionally be extended with a small machine learning model. It tries to guess whether a short piece of text sounds **positive**, **negative**, **neutral**, or even **mixed** based on patterns in your data.
